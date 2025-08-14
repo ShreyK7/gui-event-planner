@@ -15,59 +15,53 @@ public class AddEventGUI extends JFrame{
 
 
     public AddEventGUI(){
-
+        
+        //init
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500,300,500,500);
 
+        //panel
         base = new JPanel();
         base.setBorder(new EmptyBorder(10,10,10,10));
         setContentPane(base);
         base.setLayout(null);
 
+        //labels and buttons
         namelabel = new JLabel("Name");
         namelabel.setBounds(50,50,200,20);
         base.add(namelabel);
-
         nametext = new JTextField();
         nametext.setBounds(200,50,200,50);
-        base.add(nametext);
         nametext.setColumns(15);
-
+        base.add(nametext);
         hclabel = new JLabel("HeadCount");
         hclabel.setBounds(50,100,200,20);
         base.add(hclabel);
-
         hctext = new JTextField();
         hctext.setBounds(200,100,200,50);
-        base.add(hctext);
         hctext.setColumns(15);
-
+        base.add(hctext);
         addrlabel = new JLabel("Address");
         addrlabel.setBounds(50,150,200,20);
         base.add(addrlabel);
-
         addrtext = new JTextField();
         addrtext.setBounds(200,150,200,50);
-        base.add(addrtext);
         addrtext.setColumns(15);
-
+        base.add(addrtext);
         budgetlabel = new JLabel("Budget");
         budgetlabel.setBounds(50,200,200,20);
         base.add(budgetlabel);
-
         budgettext = new JTextField();
         budgettext.setBounds(200,200,200,50);
-        base.add(budgettext);
         budgettext.setColumns(15);
-
+        base.add(budgettext);
         attendeeslabel = new JLabel("Attendees");
         attendeeslabel.setBounds(50,250,200,20);
         base.add(attendeeslabel);
-
         attendeestext = new JTextField();
         attendeestext.setBounds(200,250,200,50);
-        base.add(attendeestext);
         attendeestext.setColumns(15);
+        base.add(attendeestext);
 
 
         saveeventBtn = new JButton("Save Event");
@@ -75,7 +69,7 @@ public class AddEventGUI extends JFrame{
         base.add(saveeventBtn);
         saveeventBtn.addActionListener( new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                create_event( );
+                create_event(nametext.getText(), addrtext.getText(),hctext.getText(), budgettext.getText(),attendeestext.getText());
             }
         });
 
@@ -92,8 +86,8 @@ public class AddEventGUI extends JFrame{
 
     }
 
-    void create_event(){
-                Event tmp = new Event(nametext.getText(), addrtext.getText(),hctext.getText(), budgettext.getText(),attendeestext.getText());
+    void create_event(String name, String addr, String hc, String budget, String atd){
+                Event tmp = new Event(name, addr, hc, budget, atd);
                 MainPanelGUI.FM.addEventToFile(tmp);
                 currframe.dispose();
     }

@@ -16,16 +16,17 @@ public class MainPanelGUI extends JFrame{
     public MainPanelGUI(){
 
 
-
+        //init
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500,300,500,500);
 
+        //panel
         base = new JPanel();
         base.setBorder(new EmptyBorder(10,10,10,10));
         base.setLayout(null);
         setContentPane(base);
 
-
+        //buttons
         addeventBTN = new JButton("Add Event");
         addeventBTN.setBounds(50,50,200,20);
         base.add(addeventBTN);

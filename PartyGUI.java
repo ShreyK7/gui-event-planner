@@ -17,21 +17,23 @@ public class PartyGUI extends JFrame{
 
     public PartyGUI(){
 
-
+        //init
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500,300,500,500);
 
+        //panel
         base = new JPanel();
         base.setBorder(new EmptyBorder(10,10,10,10));
         setContentPane(base);
         base.setLayout(null);
 
+        //display events
         displaylist = new JList();
         displaylist.setBounds(10,10,250,300);
         base.add(displaylist);
-
         displaylist.setModel(currentlist);
 
+        //buttons
         deleteeventBtn = new JButton("Delete Event");
         deleteeventBtn.setBounds(150,350,200,20);
         base.add(deleteeventBtn);
@@ -41,7 +43,7 @@ public class PartyGUI extends JFrame{
             }
         });
 
-
+    
         editeventBtn = new JButton("Edit Event");
         editeventBtn.setBounds(150,400,200,20);
         base.add(editeventBtn);
