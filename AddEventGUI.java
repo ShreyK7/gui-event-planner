@@ -5,7 +5,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 
-public class EventGUI extends JFrame{
+public class AddEventGUI extends JFrame{
 
         private JPanel base;
         private JLabel namelabel, hclabel, addrlabel, budgetlabel, attendeeslabel;
@@ -14,7 +14,7 @@ public class EventGUI extends JFrame{
         private JFrame currframe = this;
 
 
-    public EventGUI(String name, String address, String headcount, String budget, String attendees){
+    public AddEventGUI(){
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500,300,500,500);
@@ -69,12 +69,6 @@ public class EventGUI extends JFrame{
         base.add(attendeestext);
         attendeestext.setColumns(15);
 
-        budgettext.setText(budget);
-        attendeestext.setText(attendees);
-        addrtext.setText(address);
-        hctext.setText(headcount);
-        nametext.setText(name);
-
 
         saveeventBtn = new JButton("Save Event");
         saveeventBtn.setBounds(150,300,200,20);
@@ -86,15 +80,16 @@ public class EventGUI extends JFrame{
             }
         });
 
+
         backBtn = new JButton("Back");
         backBtn.setBounds(150,350,200,20);
         base.add(backBtn);
         backBtn.addActionListener( new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                MainPanelGUI.defaultlist.addElement(new Event(nametext.getText(), addrtext.getText(),hctext.getText(), budgettext.getText(),attendeestext.getText() ));
                 currframe.dispose();
             }
         });
+
 
     }
 
