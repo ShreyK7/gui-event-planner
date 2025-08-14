@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import java.util.ArrayList;
 
 
 public class PartyGUI extends JFrame{
@@ -15,6 +16,7 @@ public class PartyGUI extends JFrame{
 
 
     public PartyGUI(){
+
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500,300,500,500);
@@ -36,6 +38,7 @@ public class PartyGUI extends JFrame{
         deleteeventBtn.addActionListener( new ActionListener() {
             public void actionPerformed(ActionEvent e){
                     if (displaylist.getSelectedIndex() >= 0 ){
+                        MainPanelGUI.FM.removeEventFromFile(currentlist.get(displaylist.getSelectedIndex()).getName());
                         delete_event(displaylist.getSelectedIndex());
 
                     }
@@ -73,9 +76,13 @@ public class PartyGUI extends JFrame{
 
 
         //init
-        for(int i = 0; i < MainPanelGUI.defaultlist.size(); i++){
-            currentlist.addElement(MainPanelGUI.defaultlist.get(i));
+        ArrayList<Event> loadlist = MainPanelGUI.FM.getEventsFromFile();
+        for(int i = 0; i < loadlist.size(); i++){
+            currentlist.addElement(loadlist.get(i));
         }
+        // for(int i = 0; i < MainPanelGUI.defaultlist.size(); i++){
+        //     currentlist.addElement(MainPanelGUI.defaultlist.get(i));
+        // }
         displaylist.setModel(currentlist);  
 
     }
@@ -83,7 +90,9 @@ public class PartyGUI extends JFrame{
 
     //delete event
     public void delete_event(int tmp){
-        MainPanelGUI.defaultlist.remove(tmp);
+        // MainPanelGUI.defaultlist.remove(tmp);
+        MainPanelGUI.FM.removeEventFromFile(currentlist.get(displaylist.getSelectedIndex()).getName());
+
         currentlist.remove(tmp);
     }
 }

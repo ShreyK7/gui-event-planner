@@ -75,7 +75,9 @@ public class AddEventGUI extends JFrame{
         base.add(saveeventBtn);
         saveeventBtn.addActionListener( new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                MainPanelGUI.defaultlist.addElement(new Event(nametext.getText(), addrtext.getText(),hctext.getText(), budgettext.getText(),attendeestext.getText() ));
+                Event tmp = new Event(nametext.getText(), addrtext.getText(),hctext.getText(), budgettext.getText(),attendeestext.getText() );
+                MainPanelGUI.FM.addEventToFile(tmp);
+                // MainPanelGUI.defaultlist.addElement(tmp);
                 currframe.dispose();
             }
         });
