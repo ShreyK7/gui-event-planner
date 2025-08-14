@@ -44,6 +44,10 @@ public class EventFileSystem {
     public ArrayList<Event> getEventsFromFile() {
         ArrayList<Event> events = new ArrayList<Event>();
         try {
+
+            this.createEventsFile();
+
+
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
             String nextEvent;
             while ((nextEvent = reader.readLine()) != null) {
