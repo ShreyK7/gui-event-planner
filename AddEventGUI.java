@@ -75,10 +75,7 @@ public class AddEventGUI extends JFrame{
         base.add(saveeventBtn);
         saveeventBtn.addActionListener( new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                Event tmp = new Event(nametext.getText(), addrtext.getText(),hctext.getText(), budgettext.getText(),attendeestext.getText() );
-                MainPanelGUI.FM.addEventToFile(tmp);
-
-                currframe.dispose();
+                create_event( );
             }
         });
 
@@ -93,6 +90,12 @@ public class AddEventGUI extends JFrame{
         });
 
 
+    }
+
+    void create_event(){
+                Event tmp = new Event(nametext.getText(), addrtext.getText(),hctext.getText(), budgettext.getText(),attendeestext.getText());
+                MainPanelGUI.FM.addEventToFile(tmp);
+                currframe.dispose();
     }
 
 }

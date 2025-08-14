@@ -56,11 +56,6 @@ public class Event {
         return attendees;
     }
 
-    public ArrayList<String> convertAttendeeStringToList(String commaSeperatedAttendees) {
-        String removedWhiteSpace = commaSeperatedAttendees.replaceAll("\\s", "");
-        String[] attendeesArray = removedWhiteSpace.split(",");
-        return new ArrayList<String>(Arrays.asList(attendeesArray));
-    }
 
     @Override
     public String toString() {

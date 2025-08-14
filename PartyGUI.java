@@ -37,11 +37,7 @@ public class PartyGUI extends JFrame{
         base.add(deleteeventBtn);
         deleteeventBtn.addActionListener( new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                    if (displaylist.getSelectedIndex() >= 0 ){
-                        MainPanelGUI.FM.removeEventFromFile(currentlist.get(displaylist.getSelectedIndex()).getName());
-                        delete_event(displaylist.getSelectedIndex());
-
-                    }
+                delete_event(displaylist.getSelectedIndex());
             }
         });
 
@@ -51,14 +47,7 @@ public class PartyGUI extends JFrame{
         base.add(editeventBtn);
         editeventBtn.addActionListener( new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                    if (displaylist.getSelectedIndex() >= 0 ){
-                        Event tmp = currentlist.get(displaylist.getSelectedIndex());
-                        EventGUI egui = new EventGUI(tmp.getName(), tmp.getAddress(), tmp.getHeadcount(), tmp.getBudget(), tmp.getAttendees());
-                        delete_event(displaylist.getSelectedIndex());
-                        currframe.dispose();
-
-                        egui.show();
-                    }
+                edit_event();
 
             }
         });
@@ -75,21 +64,35 @@ public class PartyGUI extends JFrame{
 
 
 
-        //init
+        get_events();
+
+    }
+
+    public void get_events(){
         ArrayList<Event> loadlist = MainPanelGUI.FM.getEventsFromFile();
         for(int i = 0; i < loadlist.size(); i++){
             currentlist.addElement(loadlist.get(i));
         }
         displaylist.setModel(currentlist);  
-
     }
-
 
     //delete event
-    public void delete_event(int tmp){
-
-        MainPanelGUI.FM.removeEventFromFile(currentlist.get(displaylist.getSelectedIndex()).getName());
-
-        currentlist.remove(tmp);
+    public void delete_event(int i){
+        if (displaylist.getSelectedIndex() >= 0 ){
+            MainPanelGUI.FM.removeEventFromFile(currentlist.get(i).getName());
+            currentlist.remove(i);
+        }
     }
+
+    public void edit_event(){
+        if (displaylist.getSelectedIndex() >= 0 ){
+            Event tmp = currentlist.get(displaylist.getSelectedIndex());
+            EventGUI egui = new EventGUI(tmp.getName(), tmp.getAddress(), tmp.getHeadcount(), tmp.getBudget(), tmp.getAttendees());
+            delete_event(displaylist.getSelectedIndex());
+            currframe.dispose();
+
+            egui.show();
+        }
+    }
+
 }

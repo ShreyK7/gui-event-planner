@@ -10,7 +10,7 @@ public class MainPanelGUI extends JFrame{
         private JPanel base;
         private JButton addeventBTN, browseeventBTN;
         private JFrame currframe = this;
-        static EventFileSystem FM = new EventFileSystem("events.txt");
+        public static EventFileSystem FM = new EventFileSystem("events.txt");
 
 
     public MainPanelGUI(){
@@ -31,8 +31,7 @@ public class MainPanelGUI extends JFrame{
         base.add(addeventBTN);
         addeventBTN.addActionListener(  new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                AddEventGUI aegui = new AddEventGUI();
-                aegui.show();
+                create();
             }
         });
 
@@ -43,8 +42,7 @@ public class MainPanelGUI extends JFrame{
         base.add(browseeventBTN);
         browseeventBTN.addActionListener(   new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                PartyGUI pgui = new PartyGUI();
-                pgui.show();
+                browse();
             }
         });
 
@@ -55,6 +53,16 @@ public class MainPanelGUI extends JFrame{
 
 
 
+    }
+
+    void browse(){
+        PartyGUI pgui = new PartyGUI();
+        pgui.show();
+    }
+
+    void create(){
+        AddEventGUI aegui = new AddEventGUI();
+        aegui.show();
     }
 
 }

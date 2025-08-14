@@ -80,9 +80,11 @@ public class EventFileSystem {
             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile, true));
 
             String curLine;
+            boolean flag = false;
             while ((curLine = reader.readLine()) != null) {
                 String[] eventProperties = curLine.split("\\|");
-                if (eventProperties[0].trim().equals(eventName)) { 
+                if (eventProperties[0].trim().equals(eventName) && !flag) { 
+                    flag = true;
                     continue; 
                 }
                 writer.write(curLine + "\n");
