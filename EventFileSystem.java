@@ -45,8 +45,8 @@ public class EventFileSystem {
         ArrayList<Event> events = new ArrayList<Event>();
         try {
 
-            this.createEventsFile();
-
+            File tmpFile = new File(filePath);
+            tmpFile.createNewFile();
 
             BufferedReader reader = new BufferedReader(new FileReader(filePath));
             String nextEvent;
