@@ -1,11 +1,14 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Event {
     private String name;
     private String address;
-    private int headcount;
-    private int budget;
-    private String[] attendees;
+    private String headcount;
+    private String budget;
+    private String attendees;
 
-    public Event(String name, String address, int headcount, int budget, String[] attendees) {
+    Event(String name, String address, String headcount, String budget, String attendees) {
         this.name = name;
         this.address = address;
         this.headcount = headcount;
@@ -21,15 +24,15 @@ public class Event {
         address = newAddress;
     }
 
-    public void setHeadcount(int newHeadcount) {
+    public void setHeadcount(String newHeadcount) {
         headcount = newHeadcount;
     }
 
-    public void setBudget(int newBudget) {
+    public void setBudget(String newBudget) {
         budget = newBudget;
     }
 
-    public void setAttendees(String[] newAttendees) {
+    public void setAttendees(String newAttendees) {
         attendees = newAttendees;
     }
 
@@ -41,24 +44,26 @@ public class Event {
         return address;
     }
 
-    public int getHeadcount() {
+    public String getHeadcount() {
         return headcount;
     }
 
-    public int getBudget() {
+    public String getBudget() {
         return budget;
     }
 
-    public String[] getAttendees() {
+    public String getAttendees() {
         return attendees;
     }
 
-    public String formatAttendeesCommaSeperated() {
-        String output = "";
-        for (String name : attendees) {
-            output += name;
-            output += ", ";
-        }
-        return output.substring(0, output.length() - 2);
+    public ArrayList<String> convertAttendeeStringToList(String commaSeperatedAttendees) {
+        String removedWhiteSpace = commaSeperatedAttendees.replaceAll("\\s", "");
+        String[] attendeesArray = removedWhiteSpace.split(",");
+        return new ArrayList<String>(Arrays.asList(attendeesArray));
+    }
+
+    @Override
+    public String toString() {
+        return (name + "|" + address + "|" + headcount + "|" + budget + "|" + attendees);
     }
 }
