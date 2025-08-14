@@ -80,9 +80,6 @@ public class PartyGUI extends JFrame{
         for(int i = 0; i < loadlist.size(); i++){
             currentlist.addElement(loadlist.get(i));
         }
-        // for(int i = 0; i < MainPanelGUI.defaultlist.size(); i++){
-        //     currentlist.addElement(MainPanelGUI.defaultlist.get(i));
-        // }
         displaylist.setModel(currentlist);  
 
     }
@@ -90,7 +87,7 @@ public class PartyGUI extends JFrame{
 
     //delete event
     public void delete_event(int tmp){
-        // MainPanelGUI.defaultlist.remove(tmp);
+
         MainPanelGUI.FM.removeEventFromFile(currentlist.get(displaylist.getSelectedIndex()).getName());
 
         currentlist.remove(tmp);

@@ -10,7 +10,6 @@ public class MainPanelGUI extends JFrame{
         private JPanel base;
         private JButton addeventBTN, browseeventBTN;
         private JFrame currframe = this;
-        // static DefaultListModel<Event> defaultlist = new DefaultListModel(); //change when file manager added
         static EventFileSystem FM = new EventFileSystem("events.txt");
 
 
